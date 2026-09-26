@@ -24,7 +24,7 @@
     try{
         await chatClient.deleteUser(userId)
         console.log("Stream user deleted succesfully:", userId)
-        return userData
+        return userId
     } catch(error){
         console.log("Error upserting Stream user", error)
     }
