@@ -4,7 +4,7 @@ import User from "../models/User.js"
 
 
 // Create a client to send and receive events
-export const inngest = new Inngest({ id: "mock-mate" });
+export const inngest = new inngestnngest({ id: "mock-mate" });
 
 //take user from clerk and save to mongodb
 const syncUser = inngest.createFunction(
