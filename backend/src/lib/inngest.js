@@ -26,6 +26,7 @@ const syncUser = inngest.createFunction(
             profileImage:image_url
         }
         await User.create(newUser)
+        //clerk user data to stream
         await upsertStreamUser({
             id: newUser.clerkId.toString(),
             name: newUser.name,
