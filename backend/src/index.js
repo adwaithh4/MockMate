@@ -11,7 +11,7 @@ import connectDB from "./lib/db.js";
 import { inngest, functions } from "./lib/inngest.js";
 import { protectRoute } from "./middleware/protectRoute.js";
 import chatRoutes from "./routes/chatRoutes.js"
-
+import sessionRoutes from "./routes/sessionRoutes.js"
 
 const app = express();
 const __dirname = path.resolve();
@@ -25,6 +25,7 @@ app.use(clerkMiddleware()) //adds auth to req
 
 app.use("/api/inngest",serve({client: inngest,functions}))
 app.use("/api/chat",chatRoutes)
+app.use("/api/session",sessionRoutes) 
 
 
 app.get("/msg",protectRoute,(req,res)=>{
