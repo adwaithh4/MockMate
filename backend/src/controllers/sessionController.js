@@ -123,14 +123,15 @@ export async function endSession(req,res){
 
         const session = await Session.findById(id);
         if(!session) return res.status(404).json({message : "Session not found"})
-        //check if user is host
+
+    //check if user is host
     if(session.host.toString() != userId.toString()){
         return res.status(403).json({message :"Only host can end the sessions"})
     }
 
     //check session already completed
     if(session.status ==- "completed"){
-        return res.status(400).json({message:"Session is alresady completed"}); 
+        return res.status(400).json({message:"Session is already completed"}); 
     }
     session.status = "completed"
     await session.save()
