@@ -1,21 +1,18 @@
-import { Show, SignInButton, SignUpButton, UserButton, SignOutButton } from "@clerk/react";
+import { Show, SignInButton, SignUpButton, UserButton, SignOutButton, useUser } from "@clerk/react";
+import { Navigate, Route, Routes } from "react-router";
 
 function App() {
+  const {isSignedIn} = useUser();
+
   return (
     <>
-      <h1>HELLO</h1>
+      <h1 className="text-red-500 bg-orange-400 p-10 text-3xl">Welcome to the app</h1>
 
-      <Show when="signed-out">
-        <SignInButton mode="modal" >
-          <button className="">Login</button>
-        </SignInButton>
-        <SignUpButton />
-      </Show>
+      <Routes>
+         <Route path="/" element={<HomePage/>}/>
+         <Route path="/about" element={isSignedIn ? <ProblemsPage/> : <Navigate to={"/"}/> } />
+      </Routes>  
 
-      <Show when="signed-in">
-        <UserButton />
-        <SignOutButton />
-      </Show>
     </>
   );
 }
