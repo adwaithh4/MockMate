@@ -104,7 +104,7 @@ export async function joinSession(req,res){
         session.participant = userId
         await session.save();
 
-        //adds participant to strem chat
+        //adds participant to steaem chat
         const channel = chatClient.channel("messaging",session.callId)
         await channel.addMembers([clerkId])
 
