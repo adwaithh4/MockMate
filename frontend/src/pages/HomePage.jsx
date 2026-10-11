@@ -1,3 +1,6 @@
+import{Show, SignInButton, SignUpButton, UserButton, SignOutButton} from "@clerk/react"
+
+
 function HomePage() {
   return (
     <>
@@ -14,6 +17,7 @@ function HomePage() {
         <UserButton />
         <SignOutButton />
       </Show>
+      <Toaster/>
     </>
   )
 }
