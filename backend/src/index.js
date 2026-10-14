@@ -37,7 +37,7 @@ if(ENV.NODE_ENV === "production"){
     //allows access of static index.js from index.html
     app.use(express.static(path.join(__dirname,"../frontend/dist")));
  
-    //any routes other than express api
+    //any routes(react routes) other than express api
     app.get("{*any}",(req,res)=>{
         res.sendFile(path.join(__dirname,"../frontend/dist/index.html"))
     })
