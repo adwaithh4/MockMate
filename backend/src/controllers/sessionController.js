@@ -8,7 +8,7 @@ export async function createSession(req,res){
       const clerkId = req.user.clerkId
 
       if(!problem||!difficulty){
-        return res.status(400).json({message:"Problem and difficluty are required"})
+        return res.status(400).json({message:"Problem and difficulty are required"})
       }
       //unique id for stream video call
       const callId = `sessiom_${Date.now()}_${Math.random().toString(36).substring(7)}`
@@ -104,7 +104,7 @@ export async function joinSession(req,res){
         session.participant = userId
         await session.save();
 
-        //adds participant to steaem chat
+        //adds participant to stream chat
         const channel = chatClient.channel("messaging",session.callId)
         await channel.addMembers([clerkId])
 
