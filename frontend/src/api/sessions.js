@@ -1,36 +1,41 @@
+import axiosInstance from "../lib/axios";
+
+const SESSION_URL = "/api/sessions";
+const CHAT_URL = "/api/chat";
+
 export const sessionApi = {
   createSession: async (data) => {
-    const response = await axiosInstance.post("/api/sessions", data);
-    return response.data;
+    const { data: response } = await axiosInstance.post(SESSION_URL, data);
+    return response;
   },
 
   getActiveSessions: async () => {
-    const response = await axiosInstance.get("/api/sessions/active");
-    return response.data;
+    const { data } = await axiosInstance.get(`${SESSION_URL}/active`);
+    return data;
   },
 
   getMyRecentSessions: async () => {
-    const response = await axiosInstance.get("/api/sessions/my-recent");
-    return response.data;
+    const { data } = await axiosInstance.get(`${SESSION_URL}/my-recent`);
+    return data;
   },
 
   getSessionById: async (id) => {
-    const response = await axiosInstance.get(`/api/sessions/${id}`);
-    return response.data;
+    const { data } = await axiosInstance.get(`${SESSION_URL}/${id}`);
+    return data;
   },
 
   joinSession: async (id) => {
-    const response = await axiosInstance.post(`/api/sessions/${id}/join`);
-    return response.data;
+    const { data } = await axiosInstance.post(`${SESSION_URL}/${id}/join`);
+    return data;
   },
 
   endSession: async (id) => {
-    const response = await axiosInstance.post(`/api/sessions/${id}/end`);
-    return response.data;
+    const { data } = await axiosInstance.post(`${SESSION_URL}/${id}/end`);
+    return data;
   },
 
   getStreamToken: async () => {
-    const response = await axiosInstance.get("/api/chat/token");
-    return response.data;
+    const { data } = await axiosInstance.get(`${CHAT_URL}/token`);
+    return data;
   },
 };
