@@ -25,7 +25,7 @@ app.use(clerkMiddleware()) //adds auth to req
 
 app.use("/api/inngest",serve({client: inngest,functions}))
 app.use("/api/chat",chatRoutes)
-app.use("/api/session",sessionRoutes) 
+app.use("/api/sessions",sessionRoutes) 
 
 
 app.get("/msg",protectRoute,(req,res)=>{
