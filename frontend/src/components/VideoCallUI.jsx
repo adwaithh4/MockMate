@@ -12,7 +12,7 @@ import { Channel, Chat, MessageInput, MessageList, Thread, Window } from "stream
 import "@stream-io/video-react-sdk/dist/css/styles.css";
 import "stream-chat-react/dist/css/v2/index.css";
 
-function VideoCallUI({ chatClient, channel }) {
+function VideoCallUi({ chatClient, channel }) {
   const navigate = useNavigate();
   const { useCallCallingState, useParticipantCount } = useCallStateHooks();
   const callingState = useCallCallingState();
