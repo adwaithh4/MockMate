@@ -1,4 +1,4 @@
-import{ Show, SignInButton, UserButton, SignOutButton} from "@clerk/react"
+import{SignInButton} from "@clerk/clerk-react"
 import { Link } from "react-router";
 import {
   ArrowRightIcon,
