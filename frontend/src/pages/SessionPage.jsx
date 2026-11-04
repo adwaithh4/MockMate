@@ -13,7 +13,7 @@ import OutputPanel from "../components/OutputPanel";
 
 import useStreamClient from "../hooks/useStreamClient";
 import { StreamCall, StreamVideo } from "@stream-io/video-react-sdk";
-import VideoCallUI from "../components/VideoCallUi";
+import VideoCallUI from "../components/VideoCallUi.jsx";
 
 function SessionPage() {
   const navigate = useNavigate();
