@@ -11,7 +11,7 @@ export async function createSession(req,res){
         return res.status(400).json({message:"Problem and difficulty are required"})
       }
       //unique id for stream video call
-      const callId = `sessiom_${Date.now()}_${Math.random().toString(36).substring(7)}`
+        const callId = `session_${Date.now()}_${Math.random().toString(36).substring(7)}`;
 
       //create session in db
       const session = await Session.create({problem,difficulty,host: userId,callId})
@@ -43,10 +43,10 @@ export async function createSession(req,res){
 export async function getActiveSessions(req,res){
 
     try{
-        const sessions = await Session.find({status:active})
-        .populate("host","name profileImage email clerkd")
-        .populate("participant","name profileImage email clerkd")
-        .sort({createdAt:-1})
+        const sessions = await Session.find({ status: "active" })
+        .populate("host", "name profileImage email clerkId")
+        .populate("participant", "name profileImage email clerkId")
+        .sort({ createdAt: -1 })
         .limit(20);
 
         res.status(200).json({sessions})
@@ -67,7 +67,7 @@ export async function getMyRecentSessions(req,res){
         })
         .sort({createdAt:-1})
         .limit(20);
-        res.status(200).json(sessions)
+        res.status(200).json({ sessions });
     }catch(error){
         console.log("Error in getRecenteSessions controller:",error.message)
         res.status(500).json({message :"Internal Server Error"})
@@ -77,10 +77,10 @@ export async function getMyRecentSessions(req,res){
 export async function getSessionById(req,res){
     try{
         const{id}= req.params;
-        const session = (await Session.find(id))
+        const session = (await Session.findById(id))
         .populate("host","name email profileImage clerkId")
         .populate("participant","name email profileImage clerkId")
-        if(!session) return res.status(404).josn({message : "Session not found"})
+        if(!session) return res.status(404).json({message : "Session not found"})
         res.status(200).json({session});
             
     }catch(error){
@@ -131,7 +131,7 @@ export async function endSession(req,res){
     }
 
     //check session already completed
-    if(session.status ==- "completed"){
+    if(session.status === "completed"){
         return res.status(400).json({message:"Session is already completed"}); 
     }
     session.status = "completed"
@@ -144,7 +144,10 @@ export async function endSession(req,res){
     const channel = chatClient.channel("messaging",session.callId)
     await channel.delete();
 
-    req.status(200).json({session, message:"Session ended succesfully"})
+    res.status(200).json({
+    session,
+     message: "Session ended successfully",
+    });
 
     }catch(error){
         console.log("Error in endSession controller:",error.message)
