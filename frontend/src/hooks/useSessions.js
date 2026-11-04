@@ -5,7 +5,7 @@ import { sessionApi } from "../api/sessions";
 export const useCreateSession = () => {
   const result = useMutation({
     mutationKey: ["createSession"],
-    mutationFn: sessionApi.createSession,
+    mutationFn: sessionApi.createSession, //fn passed as refernce
     onSuccess: () => toast.success("Session created successfully!"),
     onError: (error) => toast.error(error.response?.data?.message || "Failed to create room"),
   });
