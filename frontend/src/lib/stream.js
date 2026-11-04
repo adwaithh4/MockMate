@@ -30,7 +30,7 @@ export const disconnectStreamClient = async () => {
       await client.disconnectUser();
       client = null;
     } catch (error) {
-      console.error("Error disconnecting Stream client:", error);
+      console.error("Error disconnecting Stream clients:", error);
     }
   }
 };
