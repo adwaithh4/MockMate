@@ -13,7 +13,7 @@ import OutputPanel from "../components/OutputPanel";
 
 import useStreamClient from "../hooks/useStreamClient";
 import { StreamCall, StreamVideo } from "@stream-io/video-react-sdk";
-import VideoCallUI from "../components/VideoCallUi.jsx";
+import VideoCallUi from "../components/VideoCallUi.jsx";
 
 function SessionPage() {
   const navigate = useNavigate();
@@ -280,7 +280,7 @@ function SessionPage() {
                 <div className="h-full">
                   <StreamVideo client={streamClient}>
                     <StreamCall call={call}>
-                      <VideoCallUI chatClient={chatClient} channel={channel} />
+                      <VideoCallUi chatClient={chatClient} channel={channel} />
                     </StreamCall>
                   </StreamVideo>
                 </div>
